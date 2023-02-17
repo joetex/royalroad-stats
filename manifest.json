@@ -1,0 +1,21 @@
+{
+  "manifest_version": 3,
+  "name": "Royal Road - Stats Extension",
+  "version": "1.0",
+  "description": "Improve User Retention stats by adding a timeframe element to see differences between past and present",
+  "icons": {
+    "16": "images/bar-chart-16.png",
+    "32": "images/bar-chart-32.png",
+    "48": "images/bar-chart-48.png",
+    "128": "images/bar-chart-128.png"
+  },
+  "permissions": ["storage"],
+  "content_scripts": [
+    {
+      "js": ["scripts/content.js"],
+      "matches": [
+        "https://www.royalroad.com/author-dashboard/analytics/retention/*"
+      ]
+    }
+  ]
+}
