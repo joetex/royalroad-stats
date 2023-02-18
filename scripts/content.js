@@ -73,12 +73,16 @@ async function load() {
                 else if (hours > 1) {
                     timeDesc = Math.round(hours) + ' hours ago';
                 }
-                else if (minutes > 1) {
+                else if (minutes > 10) {
                     timeDesc = Math.round(minutes) + ' minutes ago';
                 }
-                else if (seconds > 1) {
-                    timeDesc = Math.round(seconds) + ' seconds ago';
+                else {
+                    continue;
                 }
+                // else if (seconds > 0) {
+                //     continue;
+                //     timeDesc = Math.round(seconds) + ' seconds ago';
+                // }
 
                 if (timeDesc in previousTimeDiffs)
                     continue;
@@ -137,7 +141,7 @@ const updateTableStats = (historyStats) => {
             if (title in historyStats) {
                 let diff = views - historyStats[title]
                 if (diff > 0)
-                    row.children[1].htmlContent = views + ' <span class="text-success bold">+' + diff + "</span>";
+                    row.children[1].innerHTML = views + ' <span class="text-success bold">+' + diff + "</span>";
             }
 
         }
