@@ -142,6 +142,12 @@ const updateTableStats = (historyStats) => {
                 let diff = views - historyStats[title]
                 if (diff > 0)
                     row.children[1].innerHTML = views + ' <span class="text-success bold">+' + diff + "</span>";
+                else {
+                    row.children[1].innerHTML = views + "";
+                }
+            }
+            else {
+                row.children[1].innerHTML = views + "";
             }
 
         }
