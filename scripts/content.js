@@ -67,13 +67,23 @@ async function load() {
 
                 let timeDesc = "";
 
+                let previousUpdate = i > 0 ? updates[i - 1].lastUpdate : 0;
+                let previousDiff = lastUpdate - previousUpdate;
+                let previousDiffMinutes = (previousDiff / 1000) / 60;
+
                 if (days > 1) {
                     timeDesc = Math.round(days) + ' days ago'
                 }
-                else if (hours > 1) {
-                    timeDesc = Math.round(hours) + ' hours ago';
+                else if (hours >= 1) {
+                    if (hours > 15) {
+                        timeDesc = "nearly a day ago"
+                    } else if (hours <= 3) {
+                        timeDesc = "a few hours ago";
+                    } else {
+                        timeDesc = Math.round(hours) + ' hours ago';
+                    }
                 }
-                else if (minutes > 10) {
+                else if (minutes > 10 && previousDiffMinutes >= 10) {
                     timeDesc = Math.round(minutes) + ' minutes ago';
                 }
                 else {
